@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="CodingRound.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
 </head>
+
 <body>
     <div id="fullscreen-modal">
         <h2>Start Exam in Fullscreen Mode</h2>
@@ -15,32 +16,34 @@
         <p>For security, the exam must be taken in fullscreen mode. Please click the button above to begin.</p>
     </div>
     <div class="container">
-        
-        <div class="taskbar" >
-                <div class="icon">
-                    <span class="icon-text">Coding Round</span>
+
+        <div class="taskbar">
+            <div class="icon">
+                <span class="icon-text">Coding Round</span>
+            </div>
+            <div class="language-box">
+                <span>Language</span>
+                <div class="language-buttons">
+                    <button class="lang-btn" id="btn-cpp" type="button" onclick="changeLanguage('cpp')">C++</button>
+                    <button class="lang-btn" id="btn-html" type="button" onclick="changeLanguage('html')">HTML</button>
+                    <button class="lang-btn" id="btn-java" type="button" onclick="changeLanguage('java')">JAVA</button>
+                    <button class="lang-btn" id="btn-python" type="button"
+                        onclick="changeLanguage('python')">PYTHON</button>
                 </div>
-                <div class="language-box">
-                    <span>Language</span>
-                    <div class="language-buttons">
-                        <button class="lang-btn" id="btn-cpp" type="button" onclick="changeLanguage('cpp')">C++</button>
-                        <button class="lang-btn" id="btn-html" type="button" onclick="changeLanguage('html')">HTML</button>
-                        <button class="lang-btn" id="btn-java" type="button" onclick="changeLanguage('java')">JAVA</button>
-                        <button class="lang-btn" id="btn-python" type="button" onclick="changeLanguage('python')">PYTHON</button>
-                    </div>
-                </div>
+            </div>
+            <div class="taskbar-right">
                 <div class="timecontainer">
                     <div class="time" id="time">02:00:00</div>
                 </div>
                 <div class="finish-btn">
                     <a href="/Dashboard.html">
-                    <button class="f-btn"type="button" onclick="finishExam()">Finish Exam</button>
+                        <button class="f-btn" type="button" onclick="finishExam()">Finish Exam</button>
                     </a>
                 </div>
-                
-            
+            </div>
+
         </div>
-        
+
         <div class="sidebar">
             <div class="box">
                 <div class="Q" id="Q1"></div>
@@ -52,7 +55,7 @@
             </div>
         </div>
 
-        <div class="Terminal"> 
+        <div class="Terminal">
             <div class="subterminal">
                 <div class="monaco-editor" id="monaco-editor"></div>
                 <div class="output-terminal" id="output-terminal">
@@ -70,7 +73,7 @@
 
         <div class="checkbox">
             <h3>QUESTION NAVIGATION</h3>
-            
+
             <div class="status-summary">
                 <div class="status-item">
                     <div class="status-circle answered-status"></div>
@@ -85,7 +88,7 @@
                     <span class="status-text">Not Visited: <span id="notVisitedCount">12</span></span>
                 </div>
             </div>
-            
+
             <div class="cont">
                 <div class="circle" onclick="goToQuestion(1)" data-question="1">1</div>
                 <div class="circle" onclick="goToQuestion(2)" data-question="2">2</div>
@@ -102,8 +105,8 @@
             </div>
         </div>
     </div>
-<script src="CodingRound.js"> </script>
-    
+    <script src="CodingRound.js"> </script>
+
 </body>
 
 </html>
