@@ -1064,235 +1064,235 @@ document.addEventListener('fullscreenchange', function () {
 });
 
 
-// // ========================================
-// // SECURITY MEASURES
-// // ========================================
+// ========================================
+// SECURITY MEASURES
+// ========================================
 
-// // Prevent screenshots, developer tools, and right-click
-// document.addEventListener("keydown", function (e) {
-//     // Detect PrintScreen
-//     if (e.key === "PrintScreen") {
-//         alert("Screenshot is disabled!");
-//         navigator.clipboard.writeText(" "); // Clears copied screenshot
-//     }
+// Prevent screenshots, developer tools, and right-click
+document.addEventListener("keydown", function (e) {
+    // Detect PrintScreen
+    if (e.key === "PrintScreen") {
+        alert("Screenshot is disabled!");
+        navigator.clipboard.writeText(" "); // Clears copied screenshot
+    }
 
-//     // Block common dev tools shortcuts
-//     if (
-//         (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") || // Ctrl+Shift+I
-//         (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") || // Ctrl+Shift+J
-//         (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c") || // Ctrl+Shift+C
-//         (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "p") || // Ctrl+Shift+P
-//         (e.ctrlKey && e.key.toLowerCase() === "u") || 
-//         (e.ctrlKey && e.key.toLowerCase() === "f") || 
-//         (e.ctrlKey && e.key.toLowerCase() === "v") || 
-//         (e.ctrlKey && e.key.toLowerCase() === "c") || 
-//         e.key === "Fn" ||
-//         e.key === "Tab" ||
-//         e.key === "Escape" ||
-//         e.key === "Alt" ||
-//         e.key === "Ctrl" ||
-//         e.key === "F12" ||
-//         e.key === "F11" ||
-//         e.key === "F10" ||
-//         e.key === "F9" ||
-//         e.key === "F8" ||
-//         e.key === "F7" ||
-//         e.key === "F6" ||
-//         e.key === "F5" ||
-//         e.key === "F4" ||
-//         e.key === "F3" ||
-//         e.key === "F2" ||
-//         e.key === "F1"
-//     ) {
-//         e.preventDefault();
-//         alert("Developer tools are disabled!");
-//     }
-// });
+    // Block common dev tools shortcuts
+    if (
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") || // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") || // Ctrl+Shift+J
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c") || // Ctrl+Shift+C
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "p") || // Ctrl+Shift+P
+        (e.ctrlKey && e.key.toLowerCase() === "u") || 
+        (e.ctrlKey && e.key.toLowerCase() === "f") || 
+        (e.ctrlKey && e.key.toLowerCase() === "v") || 
+        (e.ctrlKey && e.key.toLowerCase() === "c") || 
+        e.key === "Fn" ||
+        e.key === "Tab" ||
+        e.key === "Escape" ||
+        e.key === "Alt" ||
+        e.key === "Ctrl" ||
+        e.key === "F12" ||
+        e.key === "F11" ||
+        e.key === "F10" ||
+        e.key === "F9" ||
+        e.key === "F8" ||
+        e.key === "F7" ||
+        e.key === "F6" ||
+        e.key === "F5" ||
+        e.key === "F4" ||
+        e.key === "F3" ||
+        e.key === "F2" ||
+        e.key === "F1"
+    ) {
+        e.preventDefault();
+        alert("Developer tools are disabled!");
+    }
+});
 
-// // Block right-click
-// document.addEventListener("contextmenu", (e) => {
-//     e.preventDefault();
-//     alert("Right-click is disabled!");
-// });
+// Block right-click
+document.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+    alert("Right-click is disabled!");
+});
 
-// // ===============================
-// // TAB SWITCH DETECTION
-// // ===============================
-// let tabSwitchDetected = false;
-// let lastFocusTime = Date.now();
-// let focusCheckInterval;
+// ===============================
+// TAB SWITCH DETECTION
+// ===============================
+let tabSwitchDetected = false;
+let lastFocusTime = Date.now();
+let focusCheckInterval;
 
-// // Primary tab switch detection using visibilitychange
-// document.addEventListener("visibilitychange", () => {
-//     console.log("Visibility changed - hidden:", document.hidden, "state:", document.visibilityState, "examStarted:", examStarted, "tabSwitchDetected:", tabSwitchDetected);
+// Primary tab switch detection using visibilitychange
+document.addEventListener("visibilitychange", () => {
+    console.log("Visibility changed - hidden:", document.hidden, "state:", document.visibilityState, "examStarted:", examStarted, "tabSwitchDetected:", tabSwitchDetected);
 
-//     // Immediate detection when tab becomes hidden
-//     if (document.hidden && examStarted && !tabSwitchDetected) {
-//         console.log("Tab switch detected - terminating exam");
-//         tabSwitchDetected = true;
-//         alert("Tab switch detected. Your session will be terminated.");
-//         finishExam(true); // Skip confirmation dialog
-//         return;
-//     }
+    // Immediate detection when tab becomes hidden
+    if (document.hidden && examStarted && !tabSwitchDetected) {
+        console.log("Tab switch detected - terminating exam");
+        tabSwitchDetected = true;
+        alert("Tab switch detected. Your session will be terminated.");
+        finishExam(true); // Skip confirmation dialog
+        return;
+    }
 
-//     // Additional check for when visibility state changes to 'hidden'
-//     if (document.visibilityState === 'hidden' && examStarted && !tabSwitchDetected) {
-//         console.log("Visibility state hidden detected - terminating exam");
-//         tabSwitchDetected = true;
-//         alert("Tab switch detected. Your session will be terminated.");
-//         finishExam(true);
-//     }
-// });
+    // Additional check for when visibility state changes to 'hidden'
+    if (document.visibilityState === 'hidden' && examStarted && !tabSwitchDetected) {
+        console.log("Visibility state hidden detected - terminating exam");
+        tabSwitchDetected = true;
+        alert("Tab switch detected. Your session will be terminated.");
+        finishExam(true);
+    }
+});
 
-// // Additional tab switch detection using pagehide event
-// window.addEventListener("pagehide", (event) => {
-//     if (examStarted && !tabSwitchDetected) {
-//         console.log("Page hide detected - terminating exam");
-//         tabSwitchDetected = true;
-//         finishExam(true);
-//     }
-// });
+// Additional tab switch detection using pagehide event
+window.addEventListener("pagehide", (event) => {
+    if (examStarted && !tabSwitchDetected) {
+        console.log("Page hide detected - terminating exam");
+        tabSwitchDetected = true;
+        finishExam(true);
+    }
+});
 
-// // Prevent tab switching using beforeunload
-// window.addEventListener("beforeunload", function (e) {
-//     if (examStarted) {
-//         saveCode(); // Save before leaving
-//         e.preventDefault();
-//         e.returnValue = 'Your exam is still in progress. Are you sure you want to leave?';
-//         return 'Your exam is still in progress. Are you sure you want to leave?';
-//     }
-// });
+// Prevent tab switching using beforeunload
+window.addEventListener("beforeunload", function (e) {
+    if (examStarted) {
+        saveCode(); // Save before leaving
+        e.preventDefault();
+        e.returnValue = 'Your exam is still in progress. Are you sure you want to leave?';
+        return 'Your exam is still in progress. Are you sure you want to leave?';
+    }
+});
 
-// // Enhanced detection for window blur and focus
-// window.addEventListener("blur", () => {
-//     if (examStarted && !tabSwitchDetected) {
-//         console.log("Window blur detected - starting focus monitoring");
-//         startFocusMonitoring();
-//     }
-// });
+// Enhanced detection for window blur and focus
+window.addEventListener("blur", () => {
+    if (examStarted && !tabSwitchDetected) {
+        console.log("Window blur detected - starting focus monitoring");
+        startFocusMonitoring();
+    }
+});
 
-// window.addEventListener("focus", () => {
-//     if (examStarted) {
-//         console.log("Window focus detected");
-//         lastFocusTime = Date.now();
-//         stopFocusMonitoring();
-//     }
-// });
+window.addEventListener("focus", () => {
+    if (examStarted) {
+        console.log("Window focus detected");
+        lastFocusTime = Date.now();
+        stopFocusMonitoring();
+    }
+});
 
-// // Monitor focus changes more aggressively
-// function startFocusMonitoring() {
-//     if (focusCheckInterval) {
-//         clearInterval(focusCheckInterval);
-//     }
+// Monitor focus changes more aggressively
+function startFocusMonitoring() {
+    if (focusCheckInterval) {
+        clearInterval(focusCheckInterval);
+    }
 
-//     focusCheckInterval = setInterval(() => {
-//         if (examStarted && !tabSwitchDetected) {
-//             const currentTime = Date.now();
-//             const timeSinceLastFocus = currentTime - lastFocusTime;
+    focusCheckInterval = setInterval(() => {
+        if (examStarted && !tabSwitchDetected) {
+            const currentTime = Date.now();
+            const timeSinceLastFocus = currentTime - lastFocusTime;
 
-//             // If more than 2 seconds have passed since last focus, consider it a tab switch
-//             if (timeSinceLastFocus > 2000 && !document.hasFocus()) {
-//                 console.log("Focus monitoring detected tab switch - terminating exam");
-//                 tabSwitchDetected = true;
-//                 clearInterval(focusCheckInterval);
-//                 alert("Tab switch detected. Your session will be terminated.");
-//                 finishExam(true);
-//             }
-//         }
-//     }, 500); // Check every 500ms
-// }
+            // If more than 2 seconds have passed since last focus, consider it a tab switch
+            if (timeSinceLastFocus > 2000 && !document.hasFocus()) {
+                console.log("Focus monitoring detected tab switch - terminating exam");
+                tabSwitchDetected = true;
+                clearInterval(focusCheckInterval);
+                alert("Tab switch detected. Your session will be terminated.");
+                finishExam(true);
+            }
+        }
+    }, 500); // Check every 500ms
+}
 
-// function stopFocusMonitoring() {
-//     if (focusCheckInterval) {
-//         clearInterval(focusCheckInterval);
-//         focusCheckInterval = null;
-//     }
-// }
+function stopFocusMonitoring() {
+    if (focusCheckInterval) {
+        clearInterval(focusCheckInterval);
+        focusCheckInterval = null;
+    }
+}
 
-// // Additional detection using document focus events
-// document.addEventListener("focusin", () => {
-//     if (examStarted) {
-//         lastFocusTime = Date.now();
-//         console.log("Document focus in detected");
-//     }
-// });
+// Additional detection using document focus events
+document.addEventListener("focusin", () => {
+    if (examStarted) {
+        lastFocusTime = Date.now();
+        console.log("Document focus in detected");
+    }
+});
 
-// document.addEventListener("focusout", () => {
-//     if (examStarted && !tabSwitchDetected) {
-//         console.log("Document focus out detected - starting monitoring");
-//         startFocusMonitoring();
-//     }
-// });
+document.addEventListener("focusout", () => {
+    if (examStarted && !tabSwitchDetected) {
+        console.log("Document focus out detected - starting monitoring");
+        startFocusMonitoring();
+    }
+});
 
-// // Mouse leave detection (when mouse leaves the window)
-// document.addEventListener("mouseleave", () => {
-//     if (examStarted && !tabSwitchDetected) {
-//         console.log("Mouse leave detected - starting monitoring");
-//         startFocusMonitoring();
-//     }
-// });
+// Mouse leave detection (when mouse leaves the window)
+document.addEventListener("mouseleave", () => {
+    if (examStarted && !tabSwitchDetected) {
+        console.log("Mouse leave detected - starting monitoring");
+        startFocusMonitoring();
+    }
+});
 
-// // Reset tab switch detection when exam starts
-// function resetTabSwitchDetection() {
-//     tabSwitchDetected = false;
-//     lastFocusTime = Date.now();
-//     stopFocusMonitoring();
-//     startActivityMonitoring();
-// }
+// Reset tab switch detection when exam starts
+function resetTabSwitchDetection() {
+    tabSwitchDetected = false;
+    lastFocusTime = Date.now();
+    stopFocusMonitoring();
+    startActivityMonitoring();
+}
 
-// // Monitor user activity to detect tab switches
-// let lastActivityTime = Date.now();
-// let activityCheckInterval;
+// Monitor user activity to detect tab switches
+let lastActivityTime = Date.now();
+let activityCheckInterval;
 
-// function startActivityMonitoring() {
-//     if (activityCheckInterval) {
-//         clearInterval(activityCheckInterval);
-//     }
+function startActivityMonitoring() {
+    if (activityCheckInterval) {
+        clearInterval(activityCheckInterval);
+    }
 
-//     // Reset activity time
-//     lastActivityTime = Date.now();
+    // Reset activity time
+    lastActivityTime = Date.now();
 
-//     // Monitor for user activity
-//     const activityEvents = ['mousedown', 'mousemove', 'keypress', 'scroll', 'click', 'touchstart'];
-//     activityEvents.forEach(eventType => {
-//         document.addEventListener(eventType, () => {
-//             if (examStarted) {
-//                 lastActivityTime = Date.now();
-//             }
-//         }, { passive: true });
-//     });
+    // Monitor for user activity
+    const activityEvents = ['mousedown', 'mousemove', 'keypress', 'scroll', 'click', 'touchstart'];
+    activityEvents.forEach(eventType => {
+        document.addEventListener(eventType, () => {
+            if (examStarted) {
+                lastActivityTime = Date.now();
+            }
+        }, { passive: true });
+    });
 
-//     // Check for inactivity and document state every second
-//     activityCheckInterval = setInterval(() => {
-//         if (examStarted && !tabSwitchDetected) {
-//             const currentTime = Date.now();
-//             const timeSinceLastActivity = currentTime - lastActivityTime;
+    // Check for inactivity and document state every second
+    activityCheckInterval = setInterval(() => {
+        if (examStarted && !tabSwitchDetected) {
+            const currentTime = Date.now();
+            const timeSinceLastActivity = currentTime - lastActivityTime;
 
-//             // Check if document is hidden or not focused
-//             if (document.hidden || !document.hasFocus()) {
-//                 console.log("Periodic check detected tab switch - hidden:", document.hidden, "focused:", document.hasFocus());
-//                 tabSwitchDetected = true;
-//                 clearInterval(activityCheckInterval);
-//                 alert("Tab switch detected. Your session will be terminated.");
-//                 finishExam(true);
-//                 return;
-//             }
+            // Check if document is hidden or not focused
+            if (document.hidden || !document.hasFocus()) {
+                console.log("Periodic check detected tab switch - hidden:", document.hidden, "focused:", document.hasFocus());
+                tabSwitchDetected = true;
+                clearInterval(activityCheckInterval);
+                alert("Tab switch detected. Your session will be terminated.");
+                finishExam(true);
+                return;
+            }
 
-//             // If no activity for more than 3 seconds and page is not focused, consider it a tab switch
-//             if (timeSinceLastActivity > 3000 && !document.hasFocus() && document.hidden) {
-//                 console.log("Activity monitoring detected tab switch - terminating exam");
-//                 tabSwitchDetected = true;
-//                 clearInterval(activityCheckInterval);
-//                 alert("Tab switch detected. Your session will be terminated.");
-//                 finishExam(true);
-//             }
-//         }
-//     }, 1000);
-// }
+            // If no activity for more than 3 seconds and page is not focused, consider it a tab switch
+            if (timeSinceLastActivity > 3000 && !document.hasFocus() && document.hidden) {
+                console.log("Activity monitoring detected tab switch - terminating exam");
+                tabSwitchDetected = true;
+                clearInterval(activityCheckInterval);
+                alert("Tab switch detected. Your session will be terminated.");
+                finishExam(true);
+            }
+        }
+    }, 1000);
+}
 
-// function stopActivityMonitoring() {
-//     if (activityCheckInterval) {
-//         clearInterval(activityCheckInterval);
-//         activityCheckInterval = null;
-//     }
-// }
+function stopActivityMonitoring() {
+    if (activityCheckInterval) {
+        clearInterval(activityCheckInterval);
+        activityCheckInterval = null;
+    }
+}
