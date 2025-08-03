@@ -997,8 +997,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Store original heights and button positions
-let originalMonacoHeight = 755;
-let originalOutputHeight = 755;
+let originalMonacoHeight = Math.floor(window.innerHeight * 0.8);
+let originalOutputHeight = Math.floor(window.innerHeight * 0.8);
 let originalNextBtnBottom = null;
 let originalSubBtnBottom = null;
 
@@ -1064,6 +1064,9 @@ document.addEventListener('fullscreenchange', function () {
 });
 
 
+// ========================================
+// SECURITY MEASURES
+// ========================================
 // ========================================
 // SECURITY MEASURES
 // ========================================
