@@ -80,8 +80,16 @@ body {
     font-size: x-large;
     text-align: center; 
     width: 100%;
-
+    justify-content: space-between; /* Spread items to edges */
 }
+
+.taskbar-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 18px;
+}
+
 .icon{
     position: relative;
     left: 54px;
@@ -111,7 +119,7 @@ body {
     padding: 0 20px;
     flex-shrink: 0;
     position: relative;
-    left: 464px;
+    left: 35%;
     top: 18px;
     border: 2px solid #dee2e6;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -172,7 +180,7 @@ body {
     justify-content: center;
     flex-shrink: 0;
     position: relative;
-    left: 822px;
+    /* left: 822px; */
     top: 22px;
 }
 
@@ -194,7 +202,7 @@ body {
 }
 .finish-btn{
     position: relative;
-    left: 829px;
+    /* left: 829px; */
     top: 21px;
 }
 
@@ -261,9 +269,12 @@ body {
     padding: 3px;
     line-height: 1.5;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 464px;
+    width: 100%;
     margin: 0 auto;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .question-content h1{
@@ -307,8 +318,8 @@ body {
     display: flex;
     flex-direction: column;
     text-align: left;
-    width: 450px;
-    padding-left: 10px;
+    width:90%;
+    padding: 10px;
     margin: 36px auto;
 }
 
@@ -504,8 +515,7 @@ body {
     flex-direction: column;
     gap: 10px;
     align-items: flex-start;
-    width: 100%;
-    max-width: 246px;
+    width: 80%;
     margin-bottom: 35px;
 }
 
@@ -546,7 +556,7 @@ body {
 .cont {
     background-color: white;
     height: 300px;
-    width: 220px;
+    width: 70%;
     padding: 15px;
     margin: 0 auto 15px auto;
     position: relative;
